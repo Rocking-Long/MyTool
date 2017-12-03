@@ -1,3 +1,7 @@
+#作者:Rocking1996
+#日期:2017.10
+
+ 
 #-*- coding:utf-8 -*-
 import requests
 import bs4
