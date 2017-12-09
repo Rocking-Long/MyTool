@@ -14,7 +14,6 @@
 #define useCheck
 
 
-/**********构造函数**********/
 template <typename T>
 Array<T>::Array()
 {
@@ -38,14 +37,15 @@ Array<T>::Array(int n, T init)
         arr[i] = init;
 }
 
-/**********析构函数**********/
+
 template <typename T>
 Array<T>::~Array()
 {
     delete [] arr;
 }
 
-/**********基本操作**********/
+
+
 template <typename T>
 T Array<T>::at(int i) const
 {
@@ -112,7 +112,7 @@ void Array<T>::array_sort (Array_Sort as)
 }
 
 
-/**********获取信息**********/
+
 template <typename T>
 unsigned int Array<T>::size() const
 {
@@ -125,7 +125,7 @@ bool Array<T>::empty() const
     return length == 0;
 }
 
-/**********Debug**********/
+
 template <typename T>
 inline void Array<T>::check(int i) const
 {

@@ -11,6 +11,13 @@ enum Array_Sort {
 };
 
 
+/**
+ *  @brief  带下标检测的数组类
+ *
+ *  封装好的数组，自带下标检测及名字。如果不需要
+ *  下标检测，在Array.cpp里注释掉 #define useCheck
+ */
+
 template <class T>
 class Array
 {
