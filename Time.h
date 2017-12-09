@@ -115,49 +115,49 @@ class Time
     public:
         Time() {}
         
-		/**
-		 *  @brief  创建一个ID
-		 *  @param  id 该id的名字
-		 *  @param  t  初始时间
-		 */
+        /**
+         *  @brief  创建一个ID
+         *  @param  id 该id的名字
+         *  @param  t  初始时间
+         */
         void createID(const string &id, long double t = 0) {
             if (id.empty()) return;
             //id已经存在
             if (house.find(id) != house.end()) {
                 cout << "ERROR:\n";
-        		cout << "ID \"" << id << "\" has exited\n";
-        		assert(0);
-			}
+                cout << "ID \"" << id << "\" has exited\n";
+                assert(0);
+            }
             house[id] = new TimeNode(id, t);
         }
         
-		/*获取当前id秒数*/
+        /*获取当前id秒数*/
         long double getSeconds(const string &id) {
             check(id);
             return house[id]->itime;
         }
 
-		/**
-		 *  @brief  开始计时
-		 *  @param  id 要开启计时的id
-		 */
+        /**
+         *  @brief  开始计时
+         *  @param  id 要开启计时的id
+         */
         inline void begin(const string &id) {
-        	check(id);
+            check(id);
             house[id]->MT.Start();
         }
-		
-		/**
-		 *  @brief  停止计时
-		 *  @param  id 要停止计时的id
-		 */
+        
+        /**
+         *  @brief  停止计时
+         *  @param  id 要停止计时的id
+         */
         inline void end(const string &id) {
-        	check(id);
+            check(id);
             house[id]->itime += house[id]->MT.Stop(); 
         }
-		
-		/**
-		 *  @brief  记录汇总
-		 */
+        
+        /**
+         *  @brief  记录汇总
+         */
         void view() {
             auto it = house.begin();
             TimeNode* Tarray[house.size()];
@@ -167,11 +167,11 @@ class Time
 
             print(Tarray, house.size());
         }
-		
-		/**
-		 *  @brief  自定义查看id的时间及其百分比
-		 *  @param  v 一个保存id的向量，可直接使用{id1, id2, ...}
-		 */
+        
+        /**
+         *  @brief  自定义查看id的时间及其百分比
+         *  @param  v 一个保存id的向量，可直接使用{id1, id2, ...}
+         */
         void view(const vector<string> v) {
             TimeNode* Tarray[v.size()];
             for (int i = 0; i < v.size(); i++)
@@ -187,16 +187,16 @@ class Time
     private:
         unordered_map<string, TimeNode*> house;
         
-		/*检测id是否存在*/
+        /*检测id是否存在*/
         inline void check(const string &id) {
             if (house.find(id) == house.end()) {
                 cout << "ERROR:\n";
-        		cout << "ID \"" << id << "\" doesn't exit\n";
-        		assert(0);
-			}
+                cout << "ID \"" << id << "\" doesn't exit\n";
+                assert(0);
+            }
         }
         
-		/*格式化打印view结果*/
+        /*格式化打印view结果*/
         void print(TimeNode** Tarray, int size) {
             insertSort(Tarray, size);
             
